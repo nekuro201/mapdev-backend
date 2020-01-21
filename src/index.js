@@ -1,3 +1,5 @@
+require('dotenv/config');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -5,7 +7,7 @@ const routes = require('./routes');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-fuomy.mongodb.net/week10?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -22,4 +24,4 @@ app.use(routes);
 // Route Params: request.params (Identificar um recurso na alteração ou demoção)
 // Body: request.body (Dados para criação ou alteração de um registro)
 
-app.listen(3333);
+app.listen(process.env.PORT || 3333);
