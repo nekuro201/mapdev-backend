@@ -45,8 +45,10 @@ module.exports = {
     //USERNAME NAO ALTERAR
   },
 
-  async destroy(){
-
+  async destroy(request, response){
+    const {github_username} = request.body;
+    const devs = await Dev.deleteOne({ github_username:github_username });
+    return response.json(devs);
   },
 
 };
