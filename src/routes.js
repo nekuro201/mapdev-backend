@@ -13,7 +13,7 @@ routes.post('/users', (request, response) => {
 // DEVS
 routes.get('/devs', DevController.index);
 routes.post('/devs', DevController.store);
-routes.delete('/devs', DevController.destroy);
+routes.delete('/devs/:github_username', DevController.destroy);
 
 routes.get('/search', SearchController.index);
 
